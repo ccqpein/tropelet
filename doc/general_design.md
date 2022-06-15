@@ -10,6 +10,10 @@ This project will have client app and server daemon app. Server app will open AP
 
 Client side is a command line app for users run the commands through terminal. Users should have the ability of `start, stop, get status, and stream output of a job`.
 
+### runtime ###
+
+
+
 ### API ###
 
 gRPC
