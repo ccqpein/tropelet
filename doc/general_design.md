@@ -16,7 +16,9 @@ Server side application should listen the port `9090` for gRPC requests.
 
 #### runtime ####
 
-This project will use [tokio 1.x](https://docs.rs/tokio/latest/tokio/) as the runtime for supporting async festures.
+This project will use [tokio 1.x](https://docs.rs/tokio/latest/tokio/) as the runtime for supporting async features.
+
+Tokio runtime will handle each the function of each requests. As the "backend" after gRPC api.
 
 #### API ####
 
@@ -46,9 +48,19 @@ proto Response {
 
 Use mTLS as the authentication method for making sure the identity of client. After the transport layer (mTLS) authorization, we also need a way to know which client it is. In this project, I might hard code some `client id` of clients, keep the publickey-client relations inside server side (which should keep in DB in real world). 
 
+Potential packages can support the mTLS:
+
++ rustls
++ native-ssl
++ openssl
+
 #### cgroups ####
 
 After jobs run, their pid should add to specific cgroup.
+
+#### Logs ####
+
+Every jobs should keep their logs in file for client to check. When the client need the streaming outputs of the job, server should write down the log to the file and send to client side at the same time. 
 
 ### Client side ###
 
