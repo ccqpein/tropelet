@@ -42,22 +42,29 @@ proto Response {
 
 ```
 
-#### CLI interface ####
-
-CLI is a single terminal application call the gRPC API on server. It has ability of print out the response from server and streaming printing. 
-
 #### Authorization ####
 
 Use mTLS as the authentication method for making sure the identity of client. After the transport layer (mTLS) authorization, we also need a way to know which client it is. In this project, I might hard code some `client id` of clients, keep the publickey-client relations inside server side (which should keep in DB in real world). 
 
 #### cgroups ####
 
-
+After jobs run, their pid should add to specific cgroup.
 
 ### Client side ###
 
+#### CLI interface ####
+
+CLI is a single terminal application call the gRPC API on server. It has ability of print out the response from server and streaming printing. 
+
 ## Tests ##
 
-### Unit tests ###
+### How to run ###
 
-### Integration tests###
+As the design upper, there are one CA crt, one server pem (or p12), and at least two client pem (or p12). Run commands below can generate them through the script:
+
+> cd ca
+> sh gen.sh
+
+After the all keys generated, use `cargo run -- --bin server` to start the server. 
+
+Then, in other terminal, `cargo run -- --bin client` to run the CLI app.
