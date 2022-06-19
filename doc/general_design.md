@@ -73,7 +73,7 @@ Depends on the demo I wrote, cipher suites should be `TLS13_AES_256_GCM_SHA384`.
 
 #### cgroups ####
 
-After jobs run, their pid should add to specific cgroup before it can folk..
+After jobs run, their pids and their children's pids should add to specific cgroup. 
 
 #### Logs ####
 
